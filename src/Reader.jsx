@@ -9,6 +9,12 @@ export default function Reader({ auth }) {
   useEffect(() => {
     const fetchPost = async () => {
       const querySnapshot = await getDocs(collection(firestore, "todos"));
+      /*
+       * To look at the shape of the data returned form FireStore
+      querySnapshot.docs.map((doc) => {
+        console.log(doc.id, doc.data());
+      });
+      */
       const result = querySnapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
